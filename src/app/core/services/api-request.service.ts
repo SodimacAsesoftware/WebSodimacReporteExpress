@@ -21,7 +21,23 @@ export class ApiRequestService {
       }),
     });
   }
-
+  public postNew<T>(url: string, obj: any): Promise<T> {
+    return new Promise<T>((resolve, reject) => {
+      this.http.post<T>(url, obj, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json;charset=UTF-8',
+        }),
+      }).subscribe(
+        (response) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+  
   /**
    *  Return request PUT
    * @param url
