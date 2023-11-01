@@ -3,4 +3,6 @@ export interface IRespuestaApi {
   codigo: number;
   mensaje: string;
   data: any;
+  isSuccessful: boolean;
+  result :any;
 }
